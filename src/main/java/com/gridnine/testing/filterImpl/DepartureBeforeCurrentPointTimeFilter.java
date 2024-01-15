@@ -19,9 +19,10 @@ public class DepartureBeforeCurrentPointTimeFilter implements FlightFilter {
     public List<Flight> filter(List<Flight> flights) {
         return flights.stream().
                 filter(flight -> flight.getSegments().
-                        stream().
-                        limit(1).
-                        allMatch(segment -> segment.getDepartureDate().isBefore(localDateTime))).
+                        stream().                                       //Фильтрация потока полетов. Оставляются только те полеты,
+                        limit(1).                               //у которых дата отправления первого сегмента (ограниченного .limit(1))
+                        allMatch(segment -> segment.getDepartureDate().//до текущего момента времени
+                                isBefore(localDateTime))).
                 collect(Collectors.toList());
     }
 }
