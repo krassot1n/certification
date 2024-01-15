@@ -28,11 +28,11 @@ public class TransferTimeMoreTwoHoursFilter implements FlightFilter {
                 collect(Collectors.toList());
     }
 
-    private long calculateParkingTime(Flight flight){
-        return IntStream.range(0,flight.getSegments().size() - 1).// Создаем поток индесов, для итерации по сигментам полета
+    private long calculateParkingTime(Flight flight) {
+        return IntStream.range(0, flight.getSegments().size() - 1).// Создаем поток индесов, для итерации по сигментам полета
                 mapToLong(i -> ChronoUnit.MINUTES.between(//Для каждого индекса i в потоке применяется функция
-                        flight.getSegments().get(i).getArrivalDate(),//которая вычисляет разницу в минутах между датой прибытия сегмента i
-                        flight.getSegments().get(i + 1).getDepartureDate())).//и датой отправления следующего сегмента i + 1.
+                flight.getSegments().get(i).getArrivalDate(),//которая вычисляет разницу в минутах между датой прибытия сегмента i
+                flight.getSegments().get(i + 1).getDepartureDate())).//и датой отправления следующего сегмента i + 1.
                 sum();//Суммирует все значения, полученные в результате предыдущего шага, представляя общее время стоянки в минутах
     }
 }

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DepartureBeforeCurrentPointTimeFilterTest {
 
     @Test
-    void departureBeforeCurrentPointTimeFilterTest(){
+    void departureBeforeCurrentPointTimeFilterTest() {
         LocalDateTime currentTime = LocalDateTime.now();
         Flight flightBeforeCurrentPointTime = new Flight(Arrays.asList(
                 new Segment(currentTime.minusDays(2), currentTime.minusHours(5)),
@@ -26,7 +26,7 @@ class DepartureBeforeCurrentPointTimeFilterTest {
 
         List<Flight> expected = new DepartureBeforeCurrentPointTimeFilter(currentTime).filter(flights);
         List<Flight> result = List.of(flightBeforeCurrentPointTime);
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
 }

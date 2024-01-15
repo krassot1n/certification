@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TransferTimeMoreTwoHoursFilterTest {
 
     @Test
-    void transferTimeMoreTwoHoursFilterTest(){
+    void transferTimeMoreTwoHoursFilterTest() {
         LocalDateTime currentTime = LocalDateTime.now();
         Flight flightWithTransferMoreTwoHours = new Flight(Arrays.asList(
                 new Segment(currentTime, currentTime.plusHours(5)),
@@ -26,7 +26,7 @@ class TransferTimeMoreTwoHoursFilterTest {
 
         List<Flight> expected = new TransferTimeMoreTwoHoursFilter(2).filter(flights);
         List<Flight> result = List.of(flightWithTransferMoreTwoHours);
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
 }

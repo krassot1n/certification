@@ -10,10 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class ArrivalDateEarlierDepartureFilterTest {
 
     @Test
-    void arrivalDateEarlierDepartureFilterTest(){
+    void arrivalDateEarlierDepartureFilterTest() {
         LocalDateTime currentTime = LocalDateTime.now();
         Flight flightWithArrivalBeforeDeparture = new Flight(Arrays.asList(
                 new Segment(currentTime, currentTime.minusHours(5)),
@@ -26,7 +27,7 @@ class ArrivalDateEarlierDepartureFilterTest {
 
         List<Flight> expected = new ArrivalDateEarlierDepartureFilter().filter(flights);
         List<Flight> result = List.of(flightWithArrivalBeforeDeparture);
-        Assertions.assertEquals(expected,result);
+        Assertions.assertEquals(expected, result);
     }
 
 }
